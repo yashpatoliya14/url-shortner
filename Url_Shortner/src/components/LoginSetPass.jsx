@@ -43,13 +43,13 @@ function LoginSetPass() {
         
         try {
             const email = localStorage.getItem('email');
-            const res = await axiosInstance.post('http://localhost:1000/api/auth/login/setpass', { email });
-            const { otp } = res.data;
+            const res = await axiosInstance.post('/api/auth/login/setpass', { email });
+            console.log(res);
+            
 
             // Set new OTP expiration time (5 seconds from now)
             const expirationTime = Date.now() + 5 * 1000; // 5 seconds
             localStorage.setItem('otpExpiration', expirationTime);
-            
             // Reset the timer
             setTimer(5);
 
@@ -71,11 +71,11 @@ function LoginSetPass() {
 
         try {
             const res = await axiosInstance.post('/api/auth/login/verify', loginSetPass);
-            const { msg, status,otp } = res.data;
+            const { msg, status,token} = res.data;
             
             if (status) {
                 handleSuccess(msg);
-                localStorage.setItem('otp',otp);
+                localStorage.setItem('token',token);
                 navigate('/home');
             } else {
                 handleError(msg);

@@ -15,8 +15,22 @@ export const handleError = (msg) => {
 
 
 const axiosInstance = axios.create({
-  baseURL: 'https://url-shortner-njw7.onrender.com/',
+  baseURL: 'http://localhost:1000/',
   withCredentials: true,
 });
+axiosInstance.interceptors.request.use(
+    function (config) {
+        const token = localStorage.getItem('token'); // Retrieve the token from localStorage or cookies
+        
+        if (token) {
+            config.headers['Authorization'] = `Bearer ${token}`; // Add the token to the Authorization header
+        }
 
+        return config;
+    },
+    function (error) {
+        // Do something with request error
+        return Promise.reject(error);
+    }
+);
 export default axiosInstance;
