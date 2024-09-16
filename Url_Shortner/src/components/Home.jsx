@@ -92,7 +92,7 @@ function Home() {
             </div>
             <div className="row justify-content-center p-5">
                 <div className="col-auto">
-                    {shortid && <h3>Short URL: <Link to={`/${shortid}`}>{`${domain}/api/${shortid}`}</Link></h3>}
+                    {shortid && <h3>Short URL: <a href={`${domain}api/${shortid}`}>{`${domain}api/${shortid}`}</a></h3>}
                 </div>
             </div>
             
