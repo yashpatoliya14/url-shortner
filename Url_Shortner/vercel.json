@@ -1,5 +1,12 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+  "routes": [
+    { "src": "/", "dest": "/home" },
+    { "src": "/home", "dest": "/home" },
+    { "src": "/history", "dest": "/history" },
+    { "src": "/contact", "dest": "/contact" },
+    { "src": "/login", "dest": "/login" },
+    { "src": "/signup", "dest": "/signup" },
+    
+    
   ]
 }
