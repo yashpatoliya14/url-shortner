@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import axiosInstance from '../utils';
 
 function Redirect() {
     const { shortid } = useParams();
@@ -11,7 +12,7 @@ function Redirect() {
     useEffect(() => {
         const fetchOriginalUrl = async () => {
             try {
-                const res = await axios.get(`http://localhost:1000/api/${shortid}`,);
+                const res = await axiosInstance.get(`/api/${shortid}`,);
                 const { redirectURL,status} = res.data;
                 if (status) {
                     window.location.href = redirectURL;

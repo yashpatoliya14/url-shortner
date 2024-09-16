@@ -1,11 +1,18 @@
 import axios from 'axios';
 import Joi from 'joi'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import { handleError, handleSuccess } from '../utils';
 import { ToastContainer } from 'react-toastify';
 import axiosInstance from '../utils';
+import refreshHandler from '../refreshRouter';
 function Login() {
+    const navigate = useNavigate()
+    useEffect(()=>{
+        if(localStorage.getItem('token')){
+            navigate('/home');
+        }
+    },[])
     const [login, setLogin] = useState({
         email: '',
         password: ''
@@ -19,7 +26,6 @@ function Login() {
     }
 
 
-    const navigate = useNavigate()
 
     const schema = Joi.object({
         email: Joi.string().email({ tlds: { allow: false } }).required(),

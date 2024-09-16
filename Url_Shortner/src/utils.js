@@ -15,7 +15,7 @@ export const handleError = (msg) => {
 
 
 const axiosInstance = axios.create({
-  baseURL: 'https://url-shortner-njw7.onrender.com',
+  baseURL: 'http://localhost:1000/',
   withCredentials: true,
 });
 axiosInstance.interceptors.request.use(

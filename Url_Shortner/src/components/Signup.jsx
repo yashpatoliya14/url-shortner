@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import axiosInstance, { handleError, handleSuccess } from '../utils';
@@ -12,7 +12,11 @@ function Signup() {
         username: ''
     });
     const navigate = useNavigate();
-
+    useEffect(()=>{
+        if(localStorage.getItem('token')){
+            navigate('/home');
+        }
+    },[])
     // Joi schema for validation
     const schema = Joi.object({
         email: Joi.string().email({ tlds: { allow: false } }).required(),

@@ -11,7 +11,11 @@ function SignupVerification() {
     const [timer, setTimer] = useState(0);
 
     const navigate = useNavigate();
-
+    useEffect(()=>{
+        if(localStorage.getItem('token')){
+            navigate('/home');
+        }
+    },[])
     useEffect(() => {
         // Get OTP expiration time from localStorage
         const expirationTime = localStorage.getItem('otpExpiration');

@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import axiosInstance from "../utils";
+import { useNavigate } from "react-router-dom";
 
 function History() {
-    const [urls,setUrls]=useState({});
+    const [urls,setUrls]=useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null); // To handle any error
     const [domain,setDomain]=useState('');
+    const navigate = useNavigate();
+    useEffect(()=>{
+        if(!localStorage.getItem('token')){
+            navigate('/login');
+        }
+    },[])
     useEffect(() => {
         const fetchUrls = async () => {
             try {
@@ -56,7 +63,7 @@ function History() {
                                 <tr key={index} align='center'>
                                     <td>{index + 1}</td>
                                     <td>{url.redirectURL}</td>
-                                    <td><a href={`${domain}api/${url.shortId}`}>{`${domain}${url.shortId}`}</a></td>
+                                    <td><a href={`/${url.shortId}`}>{`${domain}/${url.shortId}`}</a></td>
                                     <td>{url.visitHistory.length}</td>
                                 </tr>
                             ))

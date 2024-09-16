@@ -4,6 +4,11 @@ import { useNavigate } from "react-router-dom";
 import axiosInstance, {handleError} from '../utils'
 function Home() {
     const navigate = useNavigate();
+    useEffect(()=>{
+        if(!localStorage.getItem('token')){
+            navigate('/login');
+        }
+    },[])
     const [shortid, setShortid] = useState('');
     const [urlObject, setUrlObject] = useState({ redirectURL: '' });
     const [loading, setLoading] = useState(false);
@@ -87,7 +92,7 @@ function Home() {
             </div>
             <div className="row justify-content-center p-5">
                 <div className="col-auto">
-                    {shortid && <h3>Short URL: <a href={`${domain}api/${shortid}`}>{`${domain}${shortid}`}</a></h3>}
+                    {shortid && <h3>Short URL: <a href={`/${shortid}`}>{`${domain}/api/${shortid}`}</a></h3>}
                 </div>
             </div>
             

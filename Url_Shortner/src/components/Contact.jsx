@@ -1,6 +1,13 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom"
 export default function Contact(){
+    useEffect(()=>{
+        if(!localStorage.getItem('token')){
+            navigate('/login');
+        }
+    },[])
     return(
+        
         <div className="container">
             <div className="row justify-content-center my-5">
                 <div className="col-12 text-center my-5">
