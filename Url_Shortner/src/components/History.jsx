@@ -63,7 +63,7 @@ function History() {
                                 <tr key={index} align='center'>
                                     <td>{index + 1}</td>
                                     <td>{url.redirectURL}</td>
-                                    <td><a href={`/${url.shortId}`}>{`${domain}/${url.shortId}`}</a></td>
+                                    <td><a href={`${domain}api/${url.shortId}`}>{`${domain}api/${url.shortId}`}</a></td>
                                     <td>{url.visitHistory.length}</td>
                                 </tr>
                             ))
