@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import axiosInstance, {handleError} from '../utils'
 function Home() {
     const navigate = useNavigate();
@@ -92,7 +92,7 @@ function Home() {
             </div>
             <div className="row justify-content-center p-5">
                 <div className="col-auto">
-                    {shortid && <h3>Short URL: <a href={`/${shortid}`}>{`${domain}/api/${shortid}`}</a></h3>}
+                    {shortid && <h3>Short URL: <Link to={`/${shortid}`}>{`${domain}/api/${shortid}`}</Link></h3>}
                 </div>
             </div>
             
