@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation, useNavigate,Switch } from 'react-router-dom'
 import Login from './components/Login.jsx';
 import Signup from './components/Signup.jsx';
 import Home from './components/Home.jsx';
@@ -25,6 +25,7 @@ function App() {
 
       {/* <RefreshHandler setIsAuthenticate={setIsAuthenticate} /> */}
       <Routes>
+        <Switch>
         <Route path="/" element={<Navigate to='/login' />} />
         <Route path="login" element={<Login />} />
         <Route path="login/setpass" element={<LoginSetPass />} />
@@ -37,6 +38,7 @@ function App() {
           <Route path="contact" element={<Contact  />} />
           
         </Route>
+        </Switch>
       </Routes>
     </div>
   );
