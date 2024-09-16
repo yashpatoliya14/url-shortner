@@ -5,20 +5,19 @@ import { Link, useNavigate } from 'react-router-dom'
 import { handleError, handleSuccess } from '../utils';
 import { ToastContainer } from 'react-toastify';
 import axiosInstance from '../utils';
-import refreshHandler from '../refreshRouter';
 function Login() {
     const navigate = useNavigate()
-    useEffect(()=>{
-        if(localStorage.getItem('token')){
+    useEffect(() => {
+        if (localStorage.getItem('token')) {
             navigate('/home');
         }
-    },[])
+    }, [])
     const [login, setLogin] = useState({
         email: '',
         password: ''
     });
 
-    const [loading,setLoading]=useState(false);
+    const [loading, setLoading] = useState(false);
 
     const change = (e) => {
         const { name, value } = e.target;
@@ -43,7 +42,7 @@ function Login() {
             const res = await axiosInstance.post('/api/auth/login/setpass', login);
             setLoading(false);
             console.log(res);
-            
+
             const { otp } = res.data
             handleSuccess('OTP sent to your email for password reset');
             setTimeout(() => {
@@ -101,61 +100,75 @@ function Login() {
     }
 
     return (
-
-        <div className="container  rounded mt-3">
-        {loading?
-            <div className="row mt-5 justify-content-center">
-                <div className="col-auto">
-                <div className="spinner-border text-info" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </div>
-                </div>
-            </div>
-
-        :
-
-            <div className="row justify-content-center mt-md-5">
-
-                <div className="col-9 col-md-6 col-lg-4 border border-3 rounded p-lg-4 p-md-3 p-4 bg-info-subtle">
-                    <div className='row justify-content-center '>
-                        <div className="col-auto my-4">
-                            <h1 className='h1' >Login</h1>
+        <div className="bg-gray-900 h-screen flex justify-center">
+            {loading ? (
+                <div className="row mt-5 justify-content-center">
+                    <div className="col-auto">
+                        <div className="spinner-border text-info" role="status">
+                            <span className="visually-hidden">Loading...</span>
                         </div>
                     </div>
-                    <form onSubmit={handleSubmit}>
-                        <div className="row mb-3 my-3">
-                            <label className="col-md-3 col-12 form-label fs-5 ">Email</label>
-                            <div className="col-12">
-                                <input type="email" className="form-control" name='email' onChange={change} />
+                </div>
+            ) : (
+                <div className="flex w-screen">
+                    <div className="lg:h-screen h-0 w-0 lg:w-1/2 hidden lg:flex lg:flex-col lg:justify-center lg:p-20">
+                        <h1 className="text-slate-400 text-7xl font-bold pb-5 tracking-widest">Welcome</h1>
+                        <h1 className="text-slate-400 text-7xl font-bold tracking-widest">Back!</h1>
+                    </div>
+                    <div className="bg-gray-100 opacity-70 h-screen w-full lg:w-1/2 lg:p-24 p-10 flex justify-center flex-col">
+                        <div className="w-full px-10">
+                            <h1 className="text-5xl font-bold my-6">
+                                Login
+                            </h1>
+                            <p className="text-xl text-slate-400 my-8">
+                                Welcome back! Please login to your account.
+                            </p>
+                            <form onSubmit={handleSubmit}>
+                                <div className="flex flex-col my-6">
+                                    <label className="text-xl text-slate-400 py-2">Email</label>
+
+                                    <input
+                                        type="email"
+                                        className="w-full border-2 text-xl font-semibold border-slate-400 rounded-xl p-4 mt-1 bg-transparent focus:outline-none focus:border-gray-800"
+                                        name="email"
+                                        onChange={change}
+                                    />
+                                </div>
+                                <div className="flex flex-col my-6">
+                                    <label className="text-xl text-slate-400 py-2">
+                                        Password
+                                    </label>
+
+                                    <input
+                                        type="password"
+                                        className="w-full border-2 text-xl font-semibold border-slate-400 rounded-xl p-4 mt-1 bg-transparent focus:outline-none focus:border-gray-800"
+                                        name="password"
+                                        onChange={change}
+                                    />
+
+                                </div>
+
+                                <span className="block py-5">
+                                    <Link to="/login/setpass" className="text-slate-400 text-lg flex justify-end" onClick={check}>
+                                        forgot password ?{" "}
+                                    </Link>
+                                </span>
+                                <button type="submit" className="bg-slate-800 w-full text-white rounded-xl text-xl py-5 my-6 hover:bg-slate-700">
+                                    Login
+                                </button>
+                            </form>
+                            <div className="py-10">
+                                <span className="text-slate-400  text-lg">
+                                    Don't have account? <Link to="/signup" className="text-slate-900 font-semibold">Signup</Link>
+                                </span>
                             </div>
                         </div>
-                        <div className="row mb-3 my-3">
-                            <label className="col-md-3 col-12 form-label fs-5">Password</label>
-                            <div className="col-12">
-                                <input type="password" className="form-control" name='password' onChange={change} />
-                            </div>
-                        </div>
-                        <button type="submit" className="btn btn-primary my-3">Sign in</button>
-                    </form>
-                    <div className='my-1'>
-                    <span>
-                        Don't have account ? <Link to='/signup'>Sign up</Link>
-                    </span>
                     </div>
-
-                    <br />
-                    <div className='mb-3'>
-                    <span>
-                        <Link to='/login/setpass' onClick={check}>forgot password ? </Link>
-                    </span>
-                    </div>
-
                 </div>
-            </div>
-}
-                    <ToastContainer />
+            )}
+            <ToastContainer />
         </div>
-        
+
     );
 }
 

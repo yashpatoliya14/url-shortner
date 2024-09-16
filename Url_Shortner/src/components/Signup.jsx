@@ -71,52 +71,67 @@ function Signup() {
     };
 
     return (
-        <div className="container ">
-            <div className="row justify-content-center p-5">
-            <div className="col-9 col-md-6 col-lg-4 border border-3 rounded p-lg-4 p-md-3 p-4 bg-info-subtle">
-                    <div className='row justify-content-center '>
-                        <div className="col-auto my-4">
-                            <h1 className='h1' >Sign Up</h1>
-                        </div>
-                    </div>
+        <div className="bg-gray-900 h-screen flex ">
+            <div className="lg:h-screen lg:w-1/2 lg:flex lg:flex-col lg:justify-center lg:p-20 hidden h-0 w-0">
+                <h1 className="text-slate-400 text-7xl font-bold pb-5 tracking-widest">
+                    Welcome to
+                </h1>
+                <h1 className="text-slate-400 text-7xl font-bold tracking-widest">
+                    Url Encoder!
+                </h1>
+            </div>
+            <div className="bg-gray-100 opacity-70 h-screen lg:w-1/2 lg:p-24 w-full p-10 flex justify-center flex-col">
+                <div className="w-full px-10">
+                    <h1 className="text-5xl font-bold my-6">Sign Up</h1>
+                    <p className="text-xl text-slate-400 my-8">
+                        Welcome! Please create your account.
+                    </p>
                     <form onSubmit={handleSubmit}>
-                        <div className="row mb-3 my-3">
-                            <label className="col-md-3 col-12 form-label fs-5 ">Email</label>
-                            <div className="col-12">
-                                <input type="email" className="form-control" name='email' onChange={change} />
-                            </div>
+                        <div className="flex flex-col my-6">
+                            <label className="text-xl text-slate-400 py-2">Email</label>
+
+                            <input
+                                type="email"
+                                className="w-full border-2 text-xl font-semibold border-slate-400 rounded-xl p-4 mt-1 bg-transparent focus:outline-none focus:border-gray-800"
+                                name="email"
+                                onChange={change}
+                            />
                         </div>
-                        <div className="row mb-3 my-3">
-                            <label className="col-md-3 col-12 form-label fs-5">Password</label>
-                            <div className="col-12">
-                                <input type="password" className="form-control" name='password' onChange={change} />
-                            </div>
+                        <div className="flex flex-col my-6">
+                            <label className="text-xl text-slate-400 py-2">Password</label>
+                            <input
+                                type="password"
+                                className="w-full border-2 text-xl font-semibold border-slate-400 rounded-xl p-4 mt-1 bg-transparent focus:outline-none focus:border-gray-800"
+                                name="password"
+                                onChange={change}
+                            />
                         </div>
-                        <div className="row mb-3">
-                            <label className="col-md-3 col-12 form-label fs-5">Username</label>
-                            <div className="col-12">
-                                <input 
-                                    type="text" 
-                                    className="form-control" 
-                                    name='username' 
-                                    value={signup.username} 
-                                    onChange={change}
-                                />
-                            </div>
+                        <div className="flex flex-col my-6">
+                            <label className="text-xl text-slate-400 py-2">Username</label>
+                            <input
+                                type="text"
+                                className="w-full border-2 text-xl font-semibold border-slate-400 rounded-xl p-4 mt-1 bg-transparent focus:outline-none focus:border-gray-800"
+                                name="username"
+                                value={signup.username}
+                                onChange={change}
+                            />
                         </div>
-                        <button type="submit" className="btn btn-primary my-3">Sign up</button>
+                        <button type="submit" className="bg-slate-800 w-full text-white rounded-xl text-xl py-5 my-6 hover:bg-slate-700">
+                            Sign up
+                        </button>
                     </form>
-                    <div>
-                            Already have an account? <Link to='/login'>Login</Link>
+                    <div className="py-7">
+                        <span className="text-slate-400  text-lg">
+                        Already have an account? <Link to="/login" className="text-slate-900 font-semibold">Login</Link>
+                        </span>
                     </div>
                     <br />
-                    <div className='mb-3'>
-                    <span>
-                        {/* <Link to='/login/setpass' onClick={check}>forgot password ? </Link> */}
-                    </span>
+                    <div>
+                        <span>
+                            {/* <Link to='/login/setpass' onClick={check}>forgot password ? </Link> */}
+                        </span>
                     </div>
                     <ToastContainer />
-
                 </div>
             </div>
         </div>

@@ -103,34 +103,39 @@ function SignupVerification() {
 
     return (
         <>
-            <div className="container mt-3">
-                <div className='row justify-content-center'>
-                    <div>
-                        <button className='btn btn-primary' onClick={handleBack}>Back</button>
-                    </div>
-                    
+        <div className="bg-gray-900 h-screen flex justify-center">
+            <div className="flex w-screen">
+                <div className="lg:h-screen lg:w-1/2 lg:flex lg:flex-col lg:justify-center lg:p-20 hidden w-0 h-0">
+                    <h1 className="text-slate-400 text-7xl font-bold pb-5 tracking-widest">
+                        Verify Your
+                    </h1>
+                    <h1 className="text-slate-400 text-7xl font-bold tracking-widest">
+                        Email!
+                    </h1>
                 </div>
-                <div className="row justify-content-center ">
-                    <div className="col-7 col-lg-4 p-lg-4 p-md-3  bg-info-subtle rounded">
-                        <h1 className='h1 my-5'>Send Verification Mail</h1>
+                <div className="bg-gray-100 opacity-70 h-screen lg:w-1/2 w-full p-5 lg:p-24 flex justify-center flex-col">
+                    <div className="w-full px-10">
+                    <h1 className="text-5xl font-bold my-6">Verification</h1>
+                        <p className="text-xl text-slate-400 my-8">
+                            Please check your mail for OTP.
+                        </p>
                         <form onSubmit={handleSubmit}>
-                            <div className="row mb-3 mt-2">
-                                <label className="col form-label fs-5">Enter OTP:</label>
-                                <div className="col-12">
-                                    <input 
-                                        type="text" 
-                                        className="form-control" 
+                            <div className="flex flex-col my-6">
+                                <label className="text-xl text-slate-400 py-2">Enter OTP:</label>
+                                    <input
+                                        type="text"
+                                        className="w-full border-2 text-xl font-semibold border-slate-400 rounded-xl p-4 mt-1 bg-transparent focus:outline-none focus:border-gray-800"
                                         name="otp"
-                                        onChange={change} 
+                                        onChange={change}
                                         value={loginSetPass.otp}
                                     />
-                                </div>
+                                
                             </div>
-                            <button type="submit" className="btn btn-primary my-3">Verify</button>
-                            <br />
-                            <button 
-                                type="button" 
-                                className="btn btn-secondary my-3" 
+                            <button type="submit" className="bg-slate-800 w-full text-white rounded-xl text-xl py-5 my-6 hover:bg-slate-700">Verify</button>
+                            <hr className="w-full h-1 bg-slate-200 my-6"></hr>
+                            <button
+                                type="button"
+                                className="text-center text-slate-400 w-[20%] text-lg relative bottom-10 left-[40%] bg-gray-100"
                                 onClick={handleResend}
                                 disabled={timer > 0}
                             >
@@ -141,7 +146,8 @@ function SignupVerification() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
+    </>
     );
 }
 

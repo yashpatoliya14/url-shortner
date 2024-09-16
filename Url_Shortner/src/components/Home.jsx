@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axiosInstance, {handleError} from '../utils'
 function Home() {
     const navigate = useNavigate();
@@ -61,41 +61,40 @@ function Home() {
 
 
     return (
-        <div className="container-fluid">
-            
-            <div className="row justify-content-center pt-5">
+        <div className="bg-gray-100 lg:p-20 p-10 flex flex-col justify-center h-[90vh] sm:w-full">
+
+            <h1 className='text-5xl text-center self-center text-slate-800 font-bold mb-16'>URL Encoder Online</h1>
+
+            <div className='lg:px-20 flex flex-col justify-center gap-6'>
+                <input
+                    type="text"
+                    name="redirectURL"
+                    value={urlObject.redirectURL}
+                    className='w-full border-2 h-40 text-xl font-semibold border-slate-400 rounded-xl p-4 mt-1 bg-transparent focus:outline-none focus:border-gray-800'
+                    size={90}
+                    onChange={change}
+                    placeholder="Enter the URL to shorten"
+                    disabled={loading} // Disable input when loading
+                    id='url'
+                />
+                <button
+                    onClick={handleUrl}
+                    className='self-center bg-slate-900 text-white p-7 py-3 text-lg font-semibold rounded-lg'
+                    disabled={!isValid} // Disable button when loading
+                >
+                    {loading ? "Generating..." : "Generate"}
+                </button>
+                {isValid ? <></> : <div class="invalid-feedback">
+                    Please enter valid url.
+                </div>}
+                <div className="w-full border-2 h-40 text-xl font-semibold border-slate-400 rounded-xl p-4 mt-1 bg-transparent">
                 <div className="col-auto">
-                    <div className='input-group'>
-                        <input
-                            type="text"
-                            name="redirectURL"
-                            value={urlObject.redirectURL}
-                            className='form-control border-3'
-                            size={90}
-                            onChange={change}
-                            placeholder="Enter the URL to shorten"
-                            disabled={loading} // Disable input when loading
-                            id='url'
-                        />
-                        <button 
-                            onClick={handleUrl} 
-                            className='btn btn-success'
-                            disabled={!isValid} // Disable button when loading
-                            >
-                            {loading ? "Generating..." : "Generate"}
-                        </button>
-                            {isValid?<></>:<div class="invalid-feedback">
-    Please enter valid url.
-  </div>}
-                    </div>
+                    {shortid && <h3>Short URL: <a href={`${domain}api/${shortid}`}>{`${domain}${shortid}`}</a></h3>}
                 </div>
             </div>
-            <div className="row justify-content-center p-5">
-                <div className="col-auto">
-                    {shortid && <h3>Short URL: <a href={`${domain}api/${shortid}`}>{`${domain}api/${shortid}`}</a></h3>}
-                </div>
             </div>
             
+
         </div>
     );
 }

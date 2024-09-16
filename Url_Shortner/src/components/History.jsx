@@ -38,42 +38,67 @@ function History() {
     }, []); // Dependency array includes setUrls to prevent infinite loop
 
     return (
-        <div className="row">
-            <div className="col fs-4">
-                {loading && <div className="row mt-5 justify-content-center">
-                <div className="col-auto">
-                <div className="spinner-border text-info" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </div>
-                </div>
-            </div>} {/* Show loading state */}
-                {error && <p className="text-danger">{error}</p>} {/* Show error message */}
-                <table border={1} cellPadding={10} align='center'>
-                    <thead>
-                        <tr align='center'>
-                            <th>Sr. no</th>
-                            <th>Original URL</th>
-                            <th>Short ID</th>
-                            <th>Visit History</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {urls && urls.length > 0 ? (
-                            urls.map((url, index) => (
-                                <tr key={index} align='center'>
-                                    <td>{index + 1}</td>
-                                    <td>{url.redirectURL}</td>
-                                    <td><a href={`${domain}api/${url.shortId}`}>{`${domain}api/${url.shortId}`}</a></td>
-                                    <td>{url.visitHistory.length}</td>
+        <div className="flex flex-col ">
+            <h1 className='lg:text-5xl text-3xl text-center self-center text-slate-800 font-bold lg:mb-16 mb-4 mt-5'>History</h1>
+            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
+                    <div className="flex flex-col gap-6">
+                        {loading && <div className="flex justify-center">
+                            <div className="col-auto">
+                                <div className="spinner-border text-info" role="status">
+                                    <span className="visually-hidden text-2xl text-slate-900">Loading...</span>
+                                </div>
+                            </div>
+                        </div>} {/* Show loading state */}
+                        {/* {error && <p className="text-red-800 text-center font-bold">{error}</p>} Show error message */}
+                        <table className="min-w-full table-auto border-separate border-spacing-2 border-slate-500">
+                            <thead>
+                                <tr className="lg:text-2xl text-lg text-white border border-slate-600 bg-slate-600">
+                                    <th className="px-5 py-2 border border-slate-600">Sr. no</th>
+                                    <th className="px-5 border border-slate-600">Original URL</th>
+                                    <th className="px-5 border border-slate-600">Short ID</th>
+                                    <th className="px-5 border border-slate-600">Visit History</th>
                                 </tr>
-                            ))
-                        ) : (
-                            <tr>
-                                <td colSpan="4" align='center'>No URLs available</td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
+                            </thead>
+                            <tbody>
+                                <tr className="text-xl text-white border border-slate-600 bg-slate-100">
+                                    <td className="p-4  font-bold text-center text-slate-900 ">1</td>
+                                    <td className="p-4 text-center text-slate-900 ">https://www.youtube.com/watch?v=Wk4DTBSJ-hw&list=PLu71SKxNbfoBh4WZcFJ9wletHuF-Us1bA</td>
+                                    <td className="p-4 text-center text-slate-900 ">https://www.youtube.com/watch?v=Wk4DTBSJ-hw&list=PLu71SKxNbfoBh4WZcFJ9wletHuF-Us1bA</td>
+                                    <td className="p-4 text-center text-slate-900 ">2</td>
+                                </tr>
+                                <tr className="text-xl text-white border border-slate-600 bg-slate-100">
+                                    <td className="p-4 font-bold text-center text-slate-900 ">1</td>
+                                    <td className="p-4 text-center text-slate-900 ">https://www.youtube.com/watch?v=Wk4DTBSJ-hw&list=PLu71SKxNbfoBh4WZcFJ9wletHuF-Us1bA</td>
+                                    <td className="p-4 text-center text-slate-900 ">https://www.youtube.com/watch?v=Wk4DTBSJ-hw&list=PLu71SKxNbfoBh4WZcFJ9wletHuF-Us1bA</td>
+                                    <td className="p-4 text-center text-slate-900 ">2</td>
+                                </tr>
+                                <tr className="text-xl text-white border border-slate-600 bg-slate-100">
+                                    <td className="p-4 font-bold text-center text-slate-900 ">1</td>
+                                    <td className="p-4 text-center text-slate-900 ">https://www.youtube.com/watch?v=Wk4DTBSJ-hw&list=PLu71SKxNbfoBh4WZcFJ9wletHuF-Us1bA</td>
+                                    <td className="p-4 text-center text-slate-900 ">https://www.youtube.com/watch?v=Wk4DTBSJ-hw&list=PLu71SKxNbfoBh4WZcFJ9wletHuF-Us1bA</td>
+                                    <td className="p-4 text-center text-slate-900 ">2</td>
+                                </tr>
+                                {urls && urls.length > 0 ? (
+                                    urls.map((url, index) => (
+                                        <tr key={index} className="text-xl text-white border border-slate-600 bg-slate-100">
+                                            <td className="p-4 text-center text-slate-900 ">{index + 1}</td>
+                                            <td className="p-4 text-center text-slate-900 ">{url.redirectURL}</td>
+                                            <td className="p-4 text-center text-slate-900 "><a href={`${domain}api/${url.shortId}`}>{`${domain}${url.shortId}`}</a></td>
+                                            <td className="p-4 text-center text-slate-900 ">{url.visitHistory.length}</td>
+                                        </tr>
+                                    ))
+                                ) : (
+                                    <tr>
+                                        <td colSpan="4" align='center'>No URLs available</td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
