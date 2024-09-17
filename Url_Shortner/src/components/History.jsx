@@ -68,7 +68,7 @@ function History() {
                                         <tr key={index} className="text-xl text-white border border-slate-600 bg-slate-100">
                                             <td className="p-4 text-center text-slate-900 ">{index + 1}</td>
                                             <td className="p-4 text-center text-slate-900 ">{url.redirectURL}</td>
-                                            <td className="p-4 text-center text-slate-900 "><a href={`${domain}api/${url.shortId}`}>{`${domain}${url.shortId}`}</a></td>
+                                            <td className="p-4 text-center text-slate-900 "><a href={`${domain}api/${url.shortId}`}>{`${domain}api/${url.shortId}`}</a></td>
                                             <td className="p-4 text-center text-slate-900 ">{url.visitHistory.length}</td>
                                         </tr>
                                     ))
