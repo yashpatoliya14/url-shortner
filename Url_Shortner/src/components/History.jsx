@@ -62,24 +62,7 @@ function History() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className="text-xl text-white border border-slate-600 bg-slate-100">
-                                    <td className="p-4  font-bold text-center text-slate-900 ">1</td>
-                                    <td className="p-4 text-center text-slate-900 ">https://www.youtube.com/watch?v=Wk4DTBSJ-hw&list=PLu71SKxNbfoBh4WZcFJ9wletHuF-Us1bA</td>
-                                    <td className="p-4 text-center text-slate-900 ">https://www.youtube.com/watch?v=Wk4DTBSJ-hw&list=PLu71SKxNbfoBh4WZcFJ9wletHuF-Us1bA</td>
-                                    <td className="p-4 text-center text-slate-900 ">2</td>
-                                </tr>
-                                <tr className="text-xl text-white border border-slate-600 bg-slate-100">
-                                    <td className="p-4 font-bold text-center text-slate-900 ">1</td>
-                                    <td className="p-4 text-center text-slate-900 ">https://www.youtube.com/watch?v=Wk4DTBSJ-hw&list=PLu71SKxNbfoBh4WZcFJ9wletHuF-Us1bA</td>
-                                    <td className="p-4 text-center text-slate-900 ">https://www.youtube.com/watch?v=Wk4DTBSJ-hw&list=PLu71SKxNbfoBh4WZcFJ9wletHuF-Us1bA</td>
-                                    <td className="p-4 text-center text-slate-900 ">2</td>
-                                </tr>
-                                <tr className="text-xl text-white border border-slate-600 bg-slate-100">
-                                    <td className="p-4 font-bold text-center text-slate-900 ">1</td>
-                                    <td className="p-4 text-center text-slate-900 ">https://www.youtube.com/watch?v=Wk4DTBSJ-hw&list=PLu71SKxNbfoBh4WZcFJ9wletHuF-Us1bA</td>
-                                    <td className="p-4 text-center text-slate-900 ">https://www.youtube.com/watch?v=Wk4DTBSJ-hw&list=PLu71SKxNbfoBh4WZcFJ9wletHuF-Us1bA</td>
-                                    <td className="p-4 text-center text-slate-900 ">2</td>
-                                </tr>
+                                
                                 {urls && urls.length > 0 ? (
                                     urls.map((url, index) => (
                                         <tr key={index} className="text-xl text-white border border-slate-600 bg-slate-100">
