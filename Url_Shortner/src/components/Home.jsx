@@ -89,7 +89,7 @@ function Home() {
                 </div>}
                 <div className="w-full border-2 h-40 text-xl font-semibold border-slate-400 rounded-xl p-4 mt-1 bg-transparent">
                 <div className="col-auto">
-                    {shortid && <h3>Short URL: <a href={`${domain}api/${shortid}`}>{`${domain}${shortid}`}</a></h3>}
+                    {shortid && <h3>Short URL: <a href={`${domain}api/${shortid}`}>{`${domain}api/${shortid}`}</a></h3>}
                 </div>
             </div>
             </div>
